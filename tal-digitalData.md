@@ -21,66 +21,45 @@ digitalData.push({
   "interaction": {
     "eventType": "button",        // e.g., "navbar", "buttonClick", "formSubmit"
     "clickText": "",              // Text displayed on the clickable element
+    "clickSection": "",           // Section of the clickable element
     "clickURL": "",               // URL the element points to
     "search": {
       "autoSuggestSearchTerm": "",
       "searchTerm": "",
       "searchFilters": "",
-      "searchResults": ""
-    },                            // Terms entered in search fields
-    "cardDescription": "",        // Description of the card if applicable
-    "accordionAction": "",        // e.g., "Open" or "Close"
-    "interactionSection": "",     // e.g., "header", "footer"
-    "userRole": ""                // Specify if user is admin, guest, etc.
-  },
-  "pageInfo": {
-    "pageName": "",
-    "pageTitle": "",
-    "pageType": "",
-    "pageUrl": "",
-    "talid": "",
-    "mcode": "",
-    "referrer": "",               // To be confirmed if this is needed
-    "language": "",
-    "primaryCategory": "",
-    "subCategory1": "",
-    "subCategory2": "",
-    "subCategory3": "",
-    "site": {
-      "brand": "",
-      "environment": "",
-      "domain": ""
     }
   },
-  "form": {
-    "formName": "",
-    "formStep": "",
-    "formSubStep": "",
-    "quoteId": "",
-    "referenceNumber": "",
-    "formAction": "",             // For if you go forward or backwards
-    "tpdCover": "",
-    "traumaCover": "",
-    "smoker": "",
-    "state": "",
-    "postcode": "",
-    "occupation": "",
-    "age": "",
-    "gender": "",
-    "amount": "",                 // The cover amount
-    "income": "",                 // Income in form
-    "lifeCover": "",              // To be defined
-    "product": "",                // To be defined
-    "vertical": ""                // To be defined
+ "page": {
+    "pageInfo": {
+      "pageName": "",
+      "pageTitle": "",
+      "pageType": "",
+      "pageUrl": "",
+      "talid": "",
+      "mcode": "",
+      "language": "",
+      "primaryCategory": "",
+      "subCategory1": "",
+      "subCategory2": "",
+      "subCategory3": "",
+      "brand": "",
+      "environment": "",
+      "domain": "",
+      "formName": "",
+      "formStep": "",
+      "formSubStep": "",
+      "formSection": "",
+      "quoteId": "",
+      "applicationId": "",
+      }
   },
   "user": {
-    "email": "",
-    "phoneNumber": "",
-    "membershipType": "",
-    "membershipId": "",
-    "loginstatus": "",
-    "loginId": "",
-    "role": ""
+    "profileInfo": {
+      "phoneNumber": "",
+      "membershipType": "",
+      "membershipTypeId": "",
+      "loginstatus": "",
+    }
   },
   "event": "interaction"
 });
@@ -98,18 +77,15 @@ This will allow for developers to define the object types before pushing to prod
       eventType: string;
       clickText: string;
       clickURL: string;
+      clickSection: string;
       search: {
         autoSuggestSearchTerm: string;
         searchTerm: string;
         searchFilters: string;
-        searchResults: string;
-      };
-      cardDescription: string;
-      accordionAction: string;
-      interactionSection: string;
-      userRole: string;
+      }
     };
-    pageInfo: {
+"page": {
+  pageInfo: {
       pageName: string;
       pageTitle: string;
       pageType: string;
@@ -122,44 +98,27 @@ This will allow for developers to define the object types before pushing to prod
       subCategory1: string;
       subCategory2: string;
       subCategory3: string;
-      site: {
-        brand: string;
-        environment: string;
-        domain: string;
-      };
-    };
-    form: {
+      brand: string;
+      environment: string;
+      domain: string;
       formName: string;
       formStep: string;
       formSubStep: string;
       quoteId: string;
-      referenceNumber: string;
-      formAction: string;
-      tpdCover: string;
-      traumaCover: string;
-      smoker: string;
-      state: string;
-      postcode: string;
-      occupation: string;
-      age: string;
-      gender: string;
-      amount: string;
-      income: string;
-      lifeCover: string;
-      product: string;
-      vertical: string;
+      applicationId: "string";
+      } 
     };
-    user: {
+"user": {
+  "profileInfo": {
       email: string;
       phoneNumber: string;
       membershipType: string;
-      membershipId: string;
+      membershiptypeId: string;
       loginstatus: string;
-      loginId: string;
-      role: string;
+
     };
     event: string;
-  }
+  }};
 ```
 ---
 
@@ -179,65 +138,43 @@ When a user interacts with the navigation bar, the `digitalData` object should c
         "eventType": "navigation",
         "clickText": "Insurance Products",
         "clickURL": "https://datalayer-test.com",
+        "clickSection": "Header",
         "search": {
             "autoSuggestSearchTerm": "",
             "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "",
-        "accordionAction": "",
-        "interactionSection": "header",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.com"
-        }
-    },
-    "form": {
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
         "formName": "",
         "formStep": "",
         "formSubStep": "",
         "quoteId": "",
-        "referenceNumber": "",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "",
-        "state": "",
-        "postcode": "",
-        "occupation": "",
-        "age": "",
-        "gender": "",
-        "amount": "",
-        "income": "",
-        "lifeCover": "",
-        "product": "",
-        "vertical": ""
+        "applicationId": "";
+        }
     },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
@@ -257,72 +194,49 @@ For interactions with cards, such as clicking on a product card, details should 
 ```javascript
 {
     "interaction": {
-        "eventType": "card",
+        "eventType": "Card",
         "clickText": "Pet Insurance",
         "clickURL": "https://datalayer-test.com",
+        "clickSection": "Header",
         "search": {
             "autoSuggestSearchTerm": "",
             "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "Protect what matters most with our comprehensive pet insurance",
-        "accordionAction": "",
-        "interactionSection": "content",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.com"
-        }
-    },
-    "form": {
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
         "formName": "",
         "formStep": "",
         "formSubStep": "",
         "quoteId": "",
-        "referenceNumber": "",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "",
-        "state": "",
-        "postcode": "",
-        "occupation": "",
-        "age": "",
-        "gender": "",
-        "amount": "",
-        "income": "",
-        "lifeCover": "",
-        "product": "",
-        "vertical": ""
+        "applicationId": "";
+        }
     },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
-
 ```
 **Image Illustration:**
 
@@ -340,71 +254,48 @@ Capturing interactions with call-to-action buttons is essential for tracking use
 {
     "interaction": {
         "eventType": "button",
-        "clickText": "Get a Quote Now",
+        "clickText": "get a quote now",
         "clickURL": "https://datalayer-test.com",
+        "clickSection": "Content",
         "search": {
             "autoSuggestSearchTerm": "",
             "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "",
-        "accordionAction": "",
-        "interactionSection": "content",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.com"
-        }
-    },
-    "form": {
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
         "formName": "",
         "formStep": "",
         "formSubStep": "",
         "quoteId": "",
-        "referenceNumber": "",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "",
-        "state": "",
-        "postcode": "",
-        "occupation": "",
-        "age": "",
-        "gender": "",
-        "amount": "",
-        "income": "",
-        "lifeCover": "",
-        "product": "",
-        "vertical": ""
+        "applicationId": "";
+        }
     },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
-
 ```
 **Image Illustration:**
 
@@ -424,69 +315,46 @@ When users interact with accordion elements, such as expanding or collapsing sec
         "eventType": "accordion",
         "clickText": "FAQ: How do I file a claim?",
         "clickURL": "https://datalayer-test.com",
+        "clickSection": "content",
         "search": {
             "autoSuggestSearchTerm": "",
             "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "",
-        "accordionAction": "Open",
-        "interactionSection": "content",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.aiprojectlabs.com"
-        }
-    },
-    "form": {
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
         "formName": "",
         "formStep": "",
         "formSubStep": "",
         "quoteId": "",
-        "referenceNumber": "",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "",
-        "state": "",
-        "postcode": "",
-        "occupation": "",
-        "age": "",
-        "gender": "",
-        "amount": "",
-        "income": "",
-        "lifeCover": "",
-        "product": "",
-        "vertical": ""
+        "applicationId": "";
+        }
     },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
-
 ```
 **Image Illustration:**
 
@@ -505,66 +373,44 @@ For interactions with the search bar, including the terms entered and the result
     "interaction": {
         "eventType": "search",
         "clickText": "",
-        "clickURL": "https://datalayer-tesr.com",
+        "clickURL": "https://datalayer-test.com",
+        "clickSection": "content",
         "search": {
             "autoSuggestSearchTerm": "",
-            "searchTerm": "insurance",
+            "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "",
-        "accordionAction": "",
-        "interactionSection": "header",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.com"
-        }
-    },
-    "form": {
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
         "formName": "",
         "formStep": "",
         "formSubStep": "",
         "quoteId": "",
-        "referenceNumber": "",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "",
-        "state": "",
-        "postcode": "",
-        "occupation": "",
-        "age": "",
-        "gender": "",
-        "amount": "",
-        "income": "",
-        "lifeCover": "",
-        "product": "",
-        "vertical": ""
+        "applicationId": "";
+        }
     },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
@@ -585,67 +431,45 @@ For interactions with the forms, this will populate the object form with its pro
 {
     "interaction": {
         "eventType": "button",
-        "clickText": "",
-        "clickURL": "https://datalayer-tesr.com",
+        "clickText": "Next",
+        "clickURL": "https://datalayer-test.com",
+        "clickSection": "content",
         "search": {
             "autoSuggestSearchTerm": "",
-            "searchTerm": "insurance",
+            "searchTerm": "",
             "searchFilters": "",
-            "searchResults": ""
         },
-        "cardDescription": "",
-        "accordionAction": "",
-        "interactionSection": "header",
-        "userRole": ""
     },
+"page": {
     "pageInfo": {
         "pageName": "Test Website",
         "pageTitle": "Test Website",
         "pageType": "Insurance Info",
         "pageUrl": "https://datalayer-test.com",
-        "talid": "12345",
         "mcode": "insurancePage",
-        "referrer": "",
         "language": "en-AU",
         "primaryCategory": "Insurance",
         "subCategory1": "",
         "subCategory2": "",
         "subCategory3": "",
-        "site": {
-            "brand": "Insurance Corp",
-            "environment": "production",
-            "domain": "datalayer-test.com"
+        "brand": "TAL",
+        "environment": "production",
+        "domain": "datalayer-test.com"
+        "formName": "",
+        "formStep": "",
+        "formSubStep": "",
+        "quoteId": "",
+        "applicationId": "";
         }
     },
-    "form": {
-        "formName": "life-insurance-form",
-        "formStep": "form start",
-        "formSubStep": "",
-        "quoteId": "123456",
-        "referenceNumber": "78910",
-        "formAction": "",
-        "tpdCover": "",
-        "traumaCover": "",
-        "smoker": "yes",
-        "state": "nsw",
-        "postcode": "2200",
-        "occupation": "senior data analyst",
-        "age": "18",
-        "gender": "male",
-        "amount": "1000000",
-        "income": "100",
-        "lifeCover": "20",
-        "product": "life-insurance",
-        "vertical": ""
-    },
-    "user": {
+"user": {
+    "profileInfo": {
         "email": "",
         "phoneNumber": "",
         "membershipType": "",
         "membershipId": "",
         "loginstatus": "",
-        "loginId": "",
-        "role": ""
+        }
     },
     "event": "interaction"
 }
@@ -664,54 +488,35 @@ Below is the structure of the `digitalData` object that needs to be deployed. Th
 
 ```javascript
 digitalData.push({
-"pageInfo": {
-  "pageName": "DataLayer Test Home",
-  "pageTitle": "DataLayer Test - Home",
-  "pageType": "homepage",
-  "pageUrl": "https://datalayer-test.com",
-  "talid": "TL-0012345",
-  "mcode": "MC-67890",
-  "referrer": "",
-  "language": "en-AU",
-  "primaryCategory": "Data Analytics",
-  "subCategory1": "Tracking",
-  "subCategory2": "Data Layer Implementation",
-  "subCategory3": "",
-  "site": {
-    "brand": "DataLayer Test",
-    "environment": "production",
-    "domain": "datalayer-test.com"
-  }
-},
-  "form": {
-    "formName": "",
-    "formStep": "",
-    "formSubStep": "",
-    "quoteId": "",
-    "referenceNumber": "",
-    "formAction": "",             // For if you go forward or backwards
-    "tpdCover": "",
-    "traumaCover": "",
-    "smoker": "",
-    "state": "",
-    "postcode": "",
-    "occupation": "",
-    "age": "",
-    "gender": "",
-    "amount": "",                 // The cover amount
-    "income": "",                 // Income in form
-    "lifeCover": "",              // To be defined
-    "product": "",                // To be defined
-    "vertical": ""                // To be defined
+"page": {
+  "pageInfo": {
+      "pageName": "DataLayer Test Home",
+      "pageTitle": "DataLayer Test - Home",
+      "pageType": "homepage",
+      "pageUrl": "https://datalayer-test.com",
+      "mcode": "MC-67890",
+      "language": "en-AU",
+      "primaryCategory": "Data Analytics",
+      "subCategory1": "Tracking",
+      "subCategory2": "Data Layer Implementation",
+      "subCategory3": "",
+      "brand": "DataLayer Test",
+      "environment": "production",
+      "domain": "datalayer-test.com"
+      "formName": "",
+      "formStep": "",
+      "formSubStep": "",
+      "quoteId": "",
+      "applicationId": "",
+      }
   },
   "user": {
-    "email": "e9f6a7c0-3b2f-4d5e-9a1b-7c8d9e0f1234",
-    "phoneNumber": "041111111",
-    "membershipType": "broker",
-    "membershipId": "123456",
-    "loginstatus": "yes",
-    "loginId": "645345",
-    "role": ""
+    "profileInfo": {
+      "phoneNumber": "",
+      "membershipType": "broker",
+      "membershipTypeId": "123456",
+      "loginstatus": "yes",
+      }
   },
   "event": "pageView"
 });
