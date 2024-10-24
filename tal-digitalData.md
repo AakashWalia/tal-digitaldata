@@ -35,7 +35,6 @@ digitalData.push({
       "pageTitle": "",
       "pageType": "",
       "pageUrl": "",
-      "talid": "",
       "mcode": "",
       "language": "",
       "primaryCategory": "",
@@ -90,7 +89,6 @@ This will allow for developers to define the object types before pushing to prod
       pageTitle: string;
       pageType: string;
       pageUrl: string;
-      talid: string;
       mcode: string;
       referrer: string;
       language: string;
